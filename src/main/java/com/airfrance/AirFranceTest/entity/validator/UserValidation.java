@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -20,7 +21,7 @@ import java.util.regex.Pattern;
  * @author Younes Benkirane
  */
 @Component
-public class UserValidation {
+public class UserValidation implements Validator {
 
     private static final Logger logger = LoggerFactory.getLogger(UserValidation.class);
     private static final int AGE = 18;
@@ -32,6 +33,13 @@ public class UserValidation {
         this.userService = userService;
     }
 
+    /**
+     * <p>
+     *     this class support validation
+     * </p>
+     * @param aClass
+     * @return
+     */
     @Override
     public boolean supports(Class<?> aClass) {
         return aClass.equals(User.class);
