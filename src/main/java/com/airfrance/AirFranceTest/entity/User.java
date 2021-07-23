@@ -14,6 +14,8 @@ import java.util.Objects;
 @Entity
 @Table(name="user")
 public class User implements Serializable {
+
+
     private String id;
 
     private String login;
@@ -31,17 +33,6 @@ public class User implements Serializable {
     public User() {
     }
 
-    /**
-     * <p>
-     *     Constructor with parameters
-     * </p>
-     * @param id
-     * @param login
-     * @param fullName
-     * @param birthday
-     * @param country
-     *
-     */
     public User(String id, String login, String fullName, String birthday, String country) {
         this.id = id;
         this.login = login;
@@ -110,13 +101,6 @@ public class User implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    /**
-     * <p>
-     *     User equals method
-     * </p>
-     * @param o
-     * @return boolean
-     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -125,23 +109,11 @@ public class User implements Serializable {
         return Objects.equals(id, user.id) && Objects.equals(login, user.login) && Objects.equals(fullName, user.fullName) && Objects.equals(birthday, user.birthday) && Objects.equals(country, user.country) && Objects.equals(gender, user.gender) && Objects.equals(phoneNumber, user.phoneNumber);
     }
 
-    /**
-     * <p>
-     *     HashCode  method
-     * </p>
-     * @return int
-     */
     @Override
     public int hashCode() {
         return Objects.hash(id, login, fullName, birthday, country, gender, phoneNumber);
     }
 
-    /**
-     * <p>
-     *     ToString method
-     * </p>
-     * @return String
-     */
     @Override
     public String toString() {
         return "User{" +
