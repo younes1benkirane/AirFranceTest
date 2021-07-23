@@ -30,13 +30,11 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(String id, String login, String fullName, String birthday, String country) {
+    public User(String login, String fullName, String birthday, String country) {
         this.login = login;
         this.fullName = fullName;
         this.birthday = birthday;
         this.country = country;
-        this.gender = gender;
-        this.phoneNumber = phoneNumber;
     }
 
 
