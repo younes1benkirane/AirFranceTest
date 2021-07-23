@@ -2,6 +2,7 @@ package com.airfrance.AirFranceTest.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name="user")
-public class User {
+public class User implements Serializable {
     private String id;
 
     private String login;
