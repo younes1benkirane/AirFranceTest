@@ -15,9 +15,6 @@ import java.util.Objects;
 @Table(name="user")
 public class User implements Serializable {
 
-
-    private String id;
-
     private String login;
 
     private String fullName;
@@ -34,7 +31,6 @@ public class User implements Serializable {
     }
 
     public User(String id, String login, String fullName, String birthday, String country) {
-        this.id = id;
         this.login = login;
         this.fullName = fullName;
         this.birthday = birthday;
@@ -43,16 +39,8 @@ public class User implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getLogin() {
         return login;
     }
@@ -106,18 +94,17 @@ public class User implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(login, user.login) && Objects.equals(fullName, user.fullName) && Objects.equals(birthday, user.birthday) && Objects.equals(country, user.country) && Objects.equals(gender, user.gender) && Objects.equals(phoneNumber, user.phoneNumber);
+        return  Objects.equals(login, user.login) && Objects.equals(fullName, user.fullName) && Objects.equals(birthday, user.birthday) && Objects.equals(country, user.country) && Objects.equals(gender, user.gender) && Objects.equals(phoneNumber, user.phoneNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, login, fullName, birthday, country, gender, phoneNumber);
+        return Objects.hash( login, fullName, birthday, country, gender, phoneNumber);
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "id='" + id + '\'' +
                 ", login='" + login + '\'' +
                 ", fullName='" + fullName + '\'' +
                 ", birthday='" + birthday + '\'' +
