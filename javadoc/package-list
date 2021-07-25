@@ -1,0 +1,9 @@
+com.airfrance.AirFranceTest
+com.airfrance.AirFranceTest.controller
+com.airfrance.AirFranceTest.dto
+com.airfrance.AirFranceTest.entity
+com.airfrance.AirFranceTest.entity.validator
+com.airfrance.AirFranceTest.mapper
+com.airfrance.AirFranceTest.repository
+com.airfrance.AirFranceTest.service
+com.airfrance.TestAirFrance
