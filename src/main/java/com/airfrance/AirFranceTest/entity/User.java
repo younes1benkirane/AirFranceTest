@@ -25,7 +25,7 @@ public class User implements Serializable {
 
     private String gender;
 
-    private Long phoneNumber;
+    private String phoneNumber;
 
     public User() {
     }
@@ -79,11 +79,11 @@ public class User implements Serializable {
         this.gender = gender;
     }
 
-    public Long getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
