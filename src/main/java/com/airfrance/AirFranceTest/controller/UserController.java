@@ -29,12 +29,28 @@ import java.util.stream.Collectors;
 public class UserController {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
+
     @Autowired
-    UserService userService;
+    private  UserService userService;
+
     @Autowired
-    UserValidation userValidation;
+    private UserMapper userMapper;
+
     @Autowired
-    UserMapper userMapper;
+    private UserValidation userValidation;
+
+
+    public UserController(UserService userService, UserMapper userMapper, UserValidation userValidation) {
+        this.userService = userService;
+        this.userMapper = userMapper;
+        this.userValidation = userValidation;
+    }
+
+
+    public UserController(){
+
+    }
+
 
     /**
      * <p>
