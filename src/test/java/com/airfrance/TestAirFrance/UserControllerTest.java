@@ -4,7 +4,6 @@ import com.airfrance.AirFranceTest.controller.UserController;
 import com.airfrance.AirFranceTest.dto.UserDto;
 import com.airfrance.AirFranceTest.entity.User;
 import com.airfrance.AirFranceTest.entity.validator.UserValidation;
-import com.airfrance.AirFranceTest.mapper.UserMapper;
 import com.airfrance.AirFranceTest.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
@@ -49,9 +48,6 @@ public class UserControllerTest {
     UserService userService;
 
 
-    @Mock
-    UserMapper userMapper;
-
 
     UserValidation userValidation = new UserValidation(userService);
 
@@ -86,7 +82,7 @@ public class UserControllerTest {
 
         users = Arrays.asList(userOne,userOne,userOne,userOne,userOne,userOne);
         userValidation = new UserValidation(userService);
-        userController = new UserController(userService, userMapper, userValidation);
+        userController = new UserController(userService,userValidation);
         mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
         mockMvc= MockMvcBuilders.standaloneSetup(userController).build();
     }
