@@ -3,7 +3,7 @@ package com.airfrance.AirFranceTest.controller;
 import com.airfrance.AirFranceTest.dto.UserDto;
 import com.airfrance.AirFranceTest.entity.User;
 import com.airfrance.AirFranceTest.entity.validator.UserValidation;
-import com.airfrance.AirFranceTest.mapper.UserMapper;
+import com.airfrance.AirFranceTest.mapper.ObjectMapper;
 import com.airfrance.AirFranceTest.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,16 +33,15 @@ public class UserController {
     @Autowired
     private  UserService userService;
 
-    @Autowired
-    private UserMapper userMapper;
+
+    private ObjectMapper objectMapper;
 
     @Autowired
     private UserValidation userValidation;
 
 
-    public UserController(UserService userService, UserMapper userMapper, UserValidation userValidation) {
+    public UserController(UserService userService, UserValidation userValidation) {
         this.userService = userService;
-        this.userMapper = userMapper;
         this.userValidation = userValidation;
     }
 
@@ -60,7 +59,7 @@ public class UserController {
      */
     @GetMapping({"", "/"})
     public List<UserDto> findAll()  {
-        return userMapper.toDtoList(userService.findAll()) ;
+        return ObjectMapper.mapAll(userService.findAll(),UserDto.class) ;
     }
 
     /**
@@ -72,7 +71,7 @@ public class UserController {
      */
     @GetMapping("/{login}")
     public UserDto getUserByLogin(@PathVariable("login") String login) {
-        return userMapper.toDto(userService.getUserByLogin(login).orElseThrow(ClassCastException::new));
+        return ObjectMapper.map(userService.getUserByLogin(login).orElseThrow(ClassCastException::new),UserDto.class);
     }
 
     /**
@@ -86,7 +85,7 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<UserDto> newUser(@RequestBody UserDto userDto, BindingResult bindingResult) {
-        User user=userMapper.toEntity(userDto);
+        User user=ObjectMapper.map(userDto,User.class);
         logger.debug("REST request to create a new  User : {}", user);
         userValidation.validate(user, bindingResult);
 
